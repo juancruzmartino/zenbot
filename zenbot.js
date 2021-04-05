@@ -3,8 +3,8 @@ var semver = require('semver')
 var path = require('path')
 var program = require('commander')
 program._name = 'zenbot'
-
 var versions = process.versions
+require('dotenv').config()
 
 if (semver.gt('8.3.0', versions.node)) {
   console.log('You are running a node.js version older than 8.3.x, please upgrade via https://nodejs.org/en/')
@@ -25,7 +25,7 @@ boot(function (err, zenbot) {
     if (err) {
       throw err
     }
-    
+
     var commands = files.map((file)=>{
       return path.join(command_directory, file)
     }).filter((file)=>{
