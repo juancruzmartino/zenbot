@@ -24,6 +24,7 @@ services:
     volumes:
       - ./database:/data/db
     command: mongod --bind_ip=0.0.0.0 --logpath=/dev/null
+    restart: always
   # Remove below comments to use this container. "adminMongo is a Web based user interface (GUI) to handle all your MongoDB connections/databases needs."
   #
   #adminmongo:
