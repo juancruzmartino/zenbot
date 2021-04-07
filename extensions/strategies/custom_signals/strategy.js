@@ -33,7 +33,7 @@ module.exports = {
           }
         })
         .catch(function (error) {
-          console.log(error.data)
+          //console.log(error.data)
         })
     }
     cb()

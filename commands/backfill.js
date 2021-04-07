@@ -43,6 +43,9 @@ module.exports = function (program, conf) {
       var last_batch_id, last_batch_opts
       var offset = exchange.offset
       var markers, trades
+      if(conf.no_backfill) {
+        process.exit(0)
+      }
       if (!mode) {
         console.error('cannot backfill ' + selector.normalized + ': exchange does not offer historical data')
         process.exit(0)
@@ -62,7 +65,8 @@ module.exports = function (program, conf) {
           }
         } else {
           target_time = new Date().getTime()
-          start_time = new Date().getTime() - (86400000 * cmd.days)
+          console.log('aca')
+          start_time = new Date().getTime() - (86400000 * 0)
         }
       }
       resume_markers.find({selector: selector.normalized}).toArray(function (err, results) {
